@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class WorkPlace {
-    private ArrayList<String> strings;
-    private ArrayList<String> words;
+    private final ArrayList<String> strings;
+    private final ArrayList<String> words;
 
     public ArrayList<String> getStrings() {
         return new ArrayList<>(strings);
@@ -72,18 +72,6 @@ public class WorkPlace {
     private List<String> GetAllSentencesOfQuotationMarks(String text) {
         return new SentencesOfQuotationMarks(text).GetAllSentencesOfQuotationMarks();
     }
-
-    private String ChangeWordToWord(String str, String wordFind, String wordChange) {
-        StringBuilder res = new StringBuilder();
-        for (int i = 0; i < str.length(); i++) {
-            if (str.substring(i, i + wordFind.length()).equals(wordFind)) {
-                res.append(wordChange);
-            } else {
-                res.append(str, i, i + wordFind.length());
-            }
-        }
-        return res.toString();
-    }
     public List<String> ReplaseWordsToWord() {
         MostCommonWord mostCommonWord = new MostCommonWord(GetFullTextWithoutSpaces());
         String word = mostCommonWord.GetMostCommonWord();
@@ -92,13 +80,13 @@ public class WorkPlace {
         //Може винукнити помилка, не надто безпечно
         String sentence = GetAllSentencesOfQuotationMarks().get(0);
 
-        for (int i = 0; i < words.size(); i++) {
-            sentence = sentence.replace(words.get(i), " " + word + " ");
-            sentence = sentence.replace(words.get(i), " " + word + " ");
+        for (String s : words) {
+            sentence = sentence.replace(s, " " + word + " ");
+            sentence = sentence.replace(s, " " + word + " ");
         }
-        for (int i = 0; i < words.size(); i++) {
-            sentence = sentence.replace("\"" + words.get(i).stripLeading(), "\"" + word + " ");
-            sentence = sentence.replace(words.get(i).stripTrailing() + "\"", " " + word + "\"");
+        for (String s : words) {
+            sentence = sentence.replace("\"" + s.stripLeading(), "\"" + word + " ");
+            sentence = sentence.replace(s.stripTrailing() + "\"", " " + word + "\"");
         }
 
         return GetAllSentencesOfQuotationMarks(sentence);

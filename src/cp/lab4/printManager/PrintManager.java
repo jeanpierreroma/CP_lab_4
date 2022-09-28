@@ -3,7 +3,7 @@ package cp.lab4.printManager;
 import java.util.List;
 
 public class PrintManager {
-    public static void PrinStringData(String text) {
+    public static void PrintStringData(String text) {
         System.out.println(text);
     }
     public static void PrintListData(List<String> text) {

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SentencesOfQuotationMarks {
-    private String text;
+    private final String text;
 
     public SentencesOfQuotationMarks(String text) {
         this.text = text;

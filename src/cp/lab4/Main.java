@@ -12,7 +12,7 @@ public class Main {
         System.out.println("///////////////////////////////////////////////////////////////\n");
 
         System.out.println("Вхідні дані без зайвих пробілів");
-        PrintManager.PrinStringData(workPlace.GetFullTextWithoutSpaces());
+        PrintManager.PrintStringData(workPlace.GetFullTextWithoutSpaces());
         System.out.println("///////////////////////////////////////////////////////////////\n");
 
         System.out.println("Усі речення в лапках по рівнях");

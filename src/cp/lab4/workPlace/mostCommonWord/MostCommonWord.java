@@ -1,7 +1,6 @@
 package cp.lab4.workPlace.mostCommonWord;
 
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class MostCommonWord {
@@ -26,7 +25,7 @@ public class MostCommonWord {
         return word;
     }
 
-    private Map MakeTableOfAllWords() {
+    private Map<String, Integer> MakeTableOfAllWords() {
         String[] text = DeleteAllSignsFromText().split(" ");
 
         HashMap<String, Integer> wordsMap = new HashMap<>();
