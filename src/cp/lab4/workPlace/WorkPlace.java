@@ -78,15 +78,21 @@ public class WorkPlace {
         System.out.println("Найчастіше слово у тексті: " + word);
 
         //Може винукнити помилка, не надто безпечно
-        String sentence = GetAllSentencesOfQuotationMarks().get(0);
-
-        for (String s : words) {
-            sentence = sentence.replace(s, " " + word + " ");
-            sentence = sentence.replace(s, " " + word + " ");
+        String sentence = "";
+        try {
+            sentence = GetAllSentencesOfQuotationMarks().get(0);
+        } catch (Exception e) {
+            System.err.println(e);
         }
-        for (String s : words) {
-            sentence = sentence.replace("\"" + s.stripLeading(), "\"" + word + " ");
-            sentence = sentence.replace(s.stripTrailing() + "\"", " " + word + "\"");
+        if(sentence.length() > 0) {
+            for (String s : words) {
+                sentence = sentence.replace(s, " " + word + " ");
+                sentence = sentence.replace(s, " " + word + " ");
+            }
+            for (String s : words) {
+                sentence = sentence.replace("\"" + s.stripLeading(), "\"" + word + " ");
+                sentence = sentence.replace(s.stripTrailing() + "\"", " " + word + "\"");
+            }
         }
 
         return GetAllSentencesOfQuotationMarks(sentence);
